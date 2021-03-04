@@ -3,8 +3,8 @@ const PORT = process.env.PORT || 3001;
 const express = require('express');
 const app = express();
 
-const notes = require('./db/db.json');
-const { validateNote, writeToFile, findNote } = require('./lib/notes.js')
+const notes = require("./db/db.json");
+const { validateNote, writeToFile, findNote } = require('./lib/notes')
 
 const fs = require("fs");
 const path = require("path");
@@ -45,11 +45,11 @@ app.post('/api/notes', (req, res) => {
 
 //html routes
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, ".public/notes.html"))
+    res.sendFile(path.join(__dirname, "./public/notes.html"))
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, ".public/index.html"))
+    res.sendFile(path.join(__dirname, "./public/index.html"))
 });
 
 app.listen(PORT, () => {
