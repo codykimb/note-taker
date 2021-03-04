@@ -3,8 +3,8 @@ const PORT = process.env.PORT || 3001;
 const express = require('express');
 const app = express();
 
-const notes = require("./db/db.json");
-const { validateNote, writeToFile, findNote } = require('./lib/notes')
+let notes = require("./db/db.json");
+const { validateNote, writeToFile, findNote, deleteFile } = require('./lib/notes')
 
 const fs = require("fs");
 const path = require("path");
@@ -23,10 +23,18 @@ app.get('/api/notes', (req, res) => {
     res.json(notes);
   });
 
-app.get('/api/notes', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
     let id = req.params.id
     let result = findNote(id)
     res.json(result)
+})
+
+app.delete('/api/notes/:id', (req, res) => {
+    let id = req.params.id;
+    let note = findNote(id);
+    let result = deleteFile(note[0]);
+    notes = result;
+    res.json(result);
 })
 
 app.post('/api/notes', (req, res) => {
