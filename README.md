@@ -1,7 +1,7 @@
 # Note Taker  
   
 ## Description  
-Note Taker can be used to write, save and delete notes. This application uses an Express.js back end and will save and retrieve note data from a JSON file.  
+Note Taker can be used to write, save and delete notes. This application uses an Express.js back end and will save and retrieve note data from a JSON file. Nano ID is also used to give each note a unique ID.  
   
 ## Deployed Application  
 https://note-taker-by-cody.herokuapp.com/  
